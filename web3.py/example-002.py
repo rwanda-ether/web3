@@ -5,7 +5,7 @@ import web3
 
 if __name__ == "__main__":
 
-    provider = web3.HTTPProvider('http://192.168.1.2:18545') # ropsten node
+    provider = web3.HTTPProvider('http://192.168.103.200:18545') # ropsten node
     www3 = web3.Web3(provider)
 
     '''
@@ -79,3 +79,36 @@ if __name__ == "__main__":
         print (www3.fromWei(1234567890000000000, 'ether'))
 
 
+    '''
+    # Looking up transactions
+    '''
+    if True:
+        '''
+        You can look up transactions using the web3.eth.getTransaction
+        function.
+        '''
+        tx_address = '0x01418168d19aa594d3100dc6cb2e6c4170ba07d0d965001436ce99d0b5a21f6e'
+        txn = www3.eth.getTransaction(tx_address)
+        print (txn)
+
+        ''' 
+        If no transaction for the given hash can be found, then this function
+        will instead return None
+        '''
+        tx_address = '0x00000000d19aa594d3100dc6cb2e6c4170ba07d0d965001436ce990000000000'
+        txn = www3.eth.getTransaction(tx_address)
+        print (txn)
+
+
+
+    '''
+    # Looking up receipts
+    '''
+    if True:
+        '''
+        Transaction receipts can be retrieved using the
+        web3.eth.getTransactionReceipt API.
+        '''
+        tx_address = '0x01418168d19aa594d3100dc6cb2e6c4170ba07d0d965001436ce99d0b5a21f6e'
+        tx_receipt = www3.eth.getTransactionReceipt(tx_address)
+        print (tx_receipt)
