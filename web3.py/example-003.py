@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Tue Oct 09 22:56:20 JST 2018 hamada>
+#Time-stamp: <Wed Oct 10 00:44:37 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -14,7 +14,9 @@ def puts_block(block):
 if __name__ == "__main__":
     #provider = web3.HTTPProvider('http://117.102.189.70:28545') # secondary provider
     #provider = web3.HTTPProvider('http://117.102.189.70:18545') # primary provider
-    provider = web3.HTTPProvider('http://192.168.103.200:18545') # private
+    #provider = web3.HTTPProvider('http://192.168.103.200:18545') # private
+    #provider = web3.HTTPProvider('http://192.168.103.201:28545') # private
+    provider = web3.HTTPProvider('http://192.168.103.202:18545') # private
     www3 = web3.Web3(provider)
 
     if True:
@@ -26,7 +28,8 @@ if __name__ == "__main__":
 
         miner_count = {}
 
-        for i in range(30000):
+        nblock = 30000
+        for i in range(nblock):
             bnum = bnum_latest - i
             block = www3.eth.getBlock(bnum)
             try:
@@ -41,5 +44,11 @@ if __name__ == "__main__":
             print (bnum, miner, miner_count[miner])
 
         miner_list = sorted(miner_count.items(), key=lambda x: -x[1])
+        print ()
+        print ("-------------------------------------------")
+        print (" %d miners exist in the last %d blocks." % (len(miner_list), nblock))
+        print ("-------------------------------------------")
+        print ()
         for k, v in miner_list:
-            print (k, v)
+            ratio = v / (nblock * 1.) 
+            print ("%s, %d, (%s)" %(k, v, '{:.2%}'.format(ratio)))
