@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Tue Oct 09 22:34:58 JST 2018 hamada>
+#Time-stamp: <Tue Oct 09 22:37:45 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -13,7 +13,7 @@ def puts_block(block):
 
 if __name__ == "__main__":
     #provider = web3.HTTPProvider('http://117.102.189.70:28545') # secondary provider
-    provider = web3.HTTPProvider('http://117.102.189.70:18545') # first provider
+    provider = web3.HTTPProvider('http://117.102.189.70:18545') # primary provider
     www3 = web3.Web3(provider)
 
     if True:
