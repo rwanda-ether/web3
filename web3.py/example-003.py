@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Wed Oct 10 00:44:37 JST 2018 hamada>
+#Time-stamp: <Thu Oct 11 22:05:47 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -12,11 +12,12 @@ def puts_block(block):
         print (key, block[key])
 
 if __name__ == "__main__":
-    #provider = web3.HTTPProvider('http://117.102.189.70:28545') # secondary provider
     #provider = web3.HTTPProvider('http://117.102.189.70:18545') # primary provider
     #provider = web3.HTTPProvider('http://192.168.103.200:18545') # private
+    #provider = web3.HTTPProvider('http://192.168.103.202:18545') # private
     #provider = web3.HTTPProvider('http://192.168.103.201:28545') # private
-    provider = web3.HTTPProvider('http://192.168.103.202:18545') # private
+    provider = web3.HTTPProvider('http://117.102.189.70:28545') # secondary provider
+    
     www3 = web3.Web3(provider)
 
     if True:
@@ -28,7 +29,7 @@ if __name__ == "__main__":
 
         miner_count = {}
 
-        nblock = 30000
+        nblock = 300
         for i in range(nblock):
             bnum = bnum_latest - i
             block = www3.eth.getBlock(bnum)
