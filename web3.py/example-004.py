@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-#Time-stamp: <Thu Oct 11 22:43:44 JST 2018 hamada>
+#encoding: utf-8
+#Time-stamp: <Thu Oct 11 22:52:46 JST 2018 hamada>
 # https://web3py.readthedocs.io/en/stable/overview.html#overview-type-conversions
+
 import web3
 
 '''
