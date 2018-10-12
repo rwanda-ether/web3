@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Thu Oct 11 22:05:47 JST 2018 hamada>
+#Time-stamp: <Fri Oct 12 11:39:33 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -12,11 +12,11 @@ def puts_block(block):
         print (key, block[key])
 
 if __name__ == "__main__":
-    #provider = web3.HTTPProvider('http://117.102.189.70:18545') # primary provider
-    #provider = web3.HTTPProvider('http://192.168.103.200:18545') # private
-    #provider = web3.HTTPProvider('http://192.168.103.202:18545') # private
-    #provider = web3.HTTPProvider('http://192.168.103.201:28545') # private
-    provider = web3.HTTPProvider('http://117.102.189.70:28545') # secondary provider
+    geth_node = 'http://192.168.103.200:18545' # ropsten node, private
+    geth_node = 'http://117.102.189.70:18545'  # ropsten node, public primary
+    geth_node = 'http://117.102.189.70:28545'  # ropsten node, public secondary
+
+    provider = web3.HTTPProvider(geth_node)
     
     www3 = web3.Web3(provider)
 
@@ -25,13 +25,16 @@ if __name__ == "__main__":
         block_latest = www3.eth.getBlock('latest')
         #puts_block(block_latest)
         bnum_latest =block_latest['number']
+        t0 = block_latest['timestamp']
         print ("current block#:", bnum_latest)
 
         miner_count = {}
 
-        nblock = 300
+        nblock = 10000
+        t_next = block_latest['timestamp']
+
         for i in range(nblock):
-            bnum = bnum_latest - i
+            bnum = bnum_latest - i - 1
             block = www3.eth.getBlock(bnum)
             try:
                 miner = block['miner'].lower()
@@ -42,7 +45,9 @@ if __name__ == "__main__":
             except:
                 print(sys.exc_info())
 
-            print (bnum, miner, miner_count[miner])
+            t_curr = block['timestamp']
+            print (bnum, "% 4d"%(t_next-t_curr), miner, miner_count[miner])
+            t_next = t_curr
 
         miner_list = sorted(miner_count.items(), key=lambda x: -x[1])
         print ()
