@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #encoding: utf-8
-#Time-stamp: <Thu Oct 11 22:54:20 JST 2018 hamada>
+#Time-stamp: <Fri Oct 12 15:13:28 JST 2018 hamada>
 #Reference: https://web3py.readthedocs.io/en/stable/overview.html#overview-type-conversions
 
 import web3
@@ -12,8 +12,9 @@ Base API
 if __name__ == "__main__":
 
     geth_node = 'http://192.168.103.200:18545' # ropsten node, private
-    geth_node = 'http://117.102.189.70:18545' # ropsten node, public primary
-    geth_node = 'http://117.102.189.70:28545' # ropsten node, public secondary
+    geth_node = 'http://117.102.189.70:18545'  # ropsten node, public primary
+    geth_node = 'http://117.102.189.70:28545'  # ropsten node, public secondary
+    geth_node = 'http://254.254.254.254:28545' # not exsisted
 
     provider = web3.HTTPProvider(geth_node)
 
