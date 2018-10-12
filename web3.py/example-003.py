@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Fri Oct 12 15:07:34 JST 2018 hamada>
+#Time-stamp: <Fri Oct 12 15:50:41 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -14,8 +14,8 @@ def puts_block(block):
 if __name__ == "__main__":
     geth_node = 'http://117.102.189.70:18545'  # ropsten node, public primary
     geth_node = 'http://192.168.103.200:18545' # ropsten node, private
-    geth_node = 'http://192.168.103.201:28545' # ropsten node, private
     geth_node = 'http://117.102.189.70:28545'  # ropsten node, public secondary
+    geth_node = 'http://192.168.103.201:28545' # ropsten node, private
 
     provider = web3.HTTPProvider(geth_node)
     www3 = web3.Web3(provider)
@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
         miner_count = {}
 
-        nblock = 10000
+        nblock = 500000
         t_next = block_latest['timestamp']
 
         for i in range(nblock):
