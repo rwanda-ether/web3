@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Fri Oct 12 11:39:33 JST 2018 hamada>
+#Time-stamp: <Fri Oct 12 12:16:25 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -25,7 +25,6 @@ if __name__ == "__main__":
         block_latest = www3.eth.getBlock('latest')
         #puts_block(block_latest)
         bnum_latest =block_latest['number']
-        t0 = block_latest['timestamp']
         print ("current block#:", bnum_latest)
 
         miner_count = {}
