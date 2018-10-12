@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#Time-stamp: <Fri Oct 12 12:16:25 JST 2018 hamada>
+#Time-stamp: <Fri Oct 12 15:07:34 JST 2018 hamada>
 '''
 Example: an analysys of the top miners
 '''
@@ -12,13 +12,22 @@ def puts_block(block):
         print (key, block[key])
 
 if __name__ == "__main__":
-    geth_node = 'http://192.168.103.200:18545' # ropsten node, private
     geth_node = 'http://117.102.189.70:18545'  # ropsten node, public primary
+    geth_node = 'http://192.168.103.200:18545' # ropsten node, private
+    geth_node = 'http://192.168.103.201:28545' # ropsten node, private
     geth_node = 'http://117.102.189.70:28545'  # ropsten node, public secondary
 
     provider = web3.HTTPProvider(geth_node)
-    
     www3 = web3.Web3(provider)
+
+    try:
+        is_syncing = www3.eth.syncing
+        if is_syncing:
+            print("Chain hasn't been synced yet.") 
+    except:
+        print(sys.exc_info())
+        print('provider_node:', geth_node)
+        exit(-1)
 
     if True:
 
